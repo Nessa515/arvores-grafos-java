@@ -1,16 +1,17 @@
 package grafos;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
-
-public class Vertice {
+public class Vertice implements Iterable<Vertice> {
   // Identificador único do grafo
-  int id;
-  String valor;
+  public final int id;
+
+  public String valor;
   // Lista dos vertices que se conecta a partir deste
   // Atravessar todos "for"
   // Adicionar a qualquer momento
-  Set<Vertice> conexoes;
+  private Set<Vertice> conexoes;
 
   public Vertice(int id, String valor) {
     this.id = id;
@@ -36,6 +37,11 @@ public class Vertice {
 
     return outro.id == this.id;
 
+  }
+
+  @Override
+  public Iterator<Vertice> iterator() {
+    return this.conexoes.iterator();
   }
 
 }
